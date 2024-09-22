@@ -52,7 +52,12 @@ app.post("/bfhl", (req, res) => {
       } else if (file_b64.startsWith("iVBORw0KGgo")) {
         file_mime_type = "image/png";
         file_valid = true;
-      } else {
+      } 
+      else if (file_b64.startsWith('JVBER') || file_b64.startsWith('0x25PDF')) {
+        file_mime_type = 'application/pdf';
+        file_valid = true;
+      }
+      else {
         file_mime_type = "unknown";
         file_valid = false;
       }
