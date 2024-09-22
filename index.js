@@ -37,7 +37,7 @@ app.post("/bfhl", (req, res) => {
         .pop() || null;
 
     // Handle file processing
-    let file_valid = null;
+    let file_valid = false;
     let file_mime_type = null;
     let file_size_kb = null;
 
