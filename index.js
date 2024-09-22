@@ -58,7 +58,6 @@ app.post("/bfhl", (req, res) => {
         file_valid = true;
       }
       else {
-        file_mime_type = "unknown";
         file_valid = false;
       }
     }
