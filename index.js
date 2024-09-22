@@ -53,8 +53,8 @@ app.post("/bfhl", (req, res) => {
         file_mime_type = "image/png";
         file_valid = true;
       } 
-      else if (file_b64.startsWith('JVBER') || file_b64.startsWith('0x25PDF')) {
-        file_mime_type = 'application/pdf';
+      else if (file_b64.startsWith("JVBER") || file_b64.startsWith("0x25PDF")) {
+        file_mime_type = "doc/pdf";
         file_valid = true;
       }
       else {
