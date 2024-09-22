@@ -37,7 +37,7 @@ app.post("/bfhl", (req, res) => {
         .pop() || null;
 
     // Handle file processing
-    let file_valid = false;
+    let file_valid = null;
     let file_mime_type = null;
     let file_size_kb = null;
 
@@ -52,12 +52,13 @@ app.post("/bfhl", (req, res) => {
       } else if (file_b64.startsWith("iVBORw0KGgo")) {
         file_mime_type = "image/png";
         file_valid = true;
-      } 
-      else if (file_b64.startsWith("JVBER") || file_b64.startsWith("0x25PDF")) {
+      } else if (
+        file_b64.startsWith("JVBER") ||
+        file_b64.startsWith("0x25PDF")
+      ) {
         file_mime_type = "doc/pdf";
         file_valid = true;
-      }
-      else {
+      } else {
         file_valid = false;
       }
     }
@@ -69,13 +70,14 @@ app.post("/bfhl", (req, res) => {
       roll_number: "AP21110010079",
       numbers,
       alphabets,
-      highest_alphabet: highest_alphabet
-        ? [highest_alphabet]
-        : [],
+      highest_alphabet: highest_alphabet ? [highest_alphabet] : [],
       file_valid,
-      file_mime_type,
-      file_size_kb,
     };
+
+    if (file_valid) {
+      response.file_mime_type = file_mime_type;
+      response.file_size_kb = file_size_kb;
+    }
 
     res.json(response);
   } catch (error) {
