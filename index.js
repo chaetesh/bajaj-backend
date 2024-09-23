@@ -70,7 +70,7 @@ app.post("/bfhl", (req, res) => {
       roll_number: "AP21110010079",
       numbers,
       alphabets,
-      highest_alphabet: highest_alphabet ? [highest_alphabet] : [],
+      highest_lowercase_alphabet: highest_alphabet ? [highest_alphabet] : [],
       file_valid,
     };
 
